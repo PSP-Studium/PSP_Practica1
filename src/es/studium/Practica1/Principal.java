@@ -17,7 +17,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import javax.swing.JButton;
 
-public class Menu extends JFrame {
+public class Principal extends JFrame {
 	int pidGestion;
 	int pidJuego;
 	int pidPaint;
@@ -35,7 +35,7 @@ public class Menu extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Menu() {
+	public Principal() {
 		setTitle("Pr\u00E1ctica PSP Tema 1");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 770, 477);
@@ -151,6 +151,9 @@ public class Menu extends JFrame {
 				String arg3 = ".\\Gestion.jar";
 				String[] ejecutarGestion = { arg1, arg2, arg3 };
 				ejecutarComandosArray(ejecutarGestion);
+				rellenarTabla(getTable());
+				pidGestion = Integer.parseInt((String)(getTable().getModel().getValueAt(getTable().getRowCount()-1, getTable().getColumnCount()-1)));
+				btnGestion.setEnabled(false);
 			}
 		});
 		/*
@@ -166,6 +169,9 @@ public class Menu extends JFrame {
 				String arg3 = ".\\Juego.jar";
 				String[] ejecutarJuego = { arg1, arg2, arg3 };
 				ejecutarComandosArray(ejecutarJuego);
+				rellenarTabla(getTable());
+				pidJuego = Integer.parseInt((String)(getTable().getModel().getValueAt(getTable().getRowCount()-1, getTable().getColumnCount()-1)));
+				btnJuego.setEnabled(false);
 			}
 		});
 		/*
@@ -313,10 +319,9 @@ public class Menu extends JFrame {
 			public void run() {
 				try {
 					ListarProcesos();
-					Menu frame = new Menu();
+					Principal frame = new Principal();
 					rellenarTabla(frame.getTable());
 					frame.setVisible(true);
-					System.out.println(procesos);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
