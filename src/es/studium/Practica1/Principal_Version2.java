@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 
-public class Principal extends JFrame {
+public class Principal_Version2 extends JFrame {
 	//Creamos las variables para guardar el PID
 	int pidGestion;
 	int pidJuego;
@@ -37,7 +37,7 @@ public class Principal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Principal() {
+	public Principal_Version2() {
 		setTitle("Pr\u00E1ctica PSP Tema 1"); //Creamos el titulo
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Indicamos que hace el boton X
 		setBounds(100, 100, 770, 477);
@@ -328,7 +328,7 @@ public class Principal extends JFrame {
 		for (int i = 0; i < procesos.size(); i++) {
 			//creamos un array con los datos de la columna 0 y 1
 			Object[] fila = { extraerDatos(0, i), extraerDatos(1, i) };
-			System.out.println(fila.toString());
+			
 			modelo.addRow(fila);
 		}
 	}
@@ -353,7 +353,6 @@ public class Principal extends JFrame {
 		Process procesoEjecutarComando;
 		try {
 			procesoEjecutarComando = Runtime.getRuntime().exec(comando);
-			//long pidtest=procesoEjecutarComando.pid();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -388,7 +387,7 @@ public class Principal extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Principal frame = new Principal();
+					Principal_Version2 frame = new Principal_Version2();
 					rellenarTabla(frame.getTable());
 					frame.setVisible(true);
 				} catch (Exception e) {
